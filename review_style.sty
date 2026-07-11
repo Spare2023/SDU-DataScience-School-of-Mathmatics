@@ -1,0 +1,220 @@
+% ============================================================
+% review_style.sty — 统一复习资料模板
+% 适用于 数据结构、离散数学、统计计算、
+%         数据分析与数据挖掘、多元统计分析
+% ============================================================
+\ProvidesPackage{review_style}[2026/07/11 Unified Review Template]
+
+% ---------- 基础包 ----------
+\RequirePackage[UTF8]{ctex}
+\RequirePackage{amsmath,amssymb,amsthm}
+\RequirePackage{geometry}
+\RequirePackage[shortlabels]{enumitem}
+\RequirePackage{booktabs}
+\RequirePackage{array}
+\RequirePackage{xcolor}
+\RequirePackage{fancyhdr}
+\RequirePackage{titlesec}
+\RequirePackage{hyperref}
+\RequirePackage{graphicx}
+\RequirePackage{longtable}
+\RequirePackage{float}
+\RequirePackage{caption}
+\RequirePackage{tcolorbox}
+\RequirePackage{multicol}
+\RequirePackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows.meta, positioning, fit, backgrounds,
+  chains, calc, decorations.pathmorphing, shadows}
+
+% ---------- 页面设置 ----------
+\geometry{a4paper, top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm,
+          headheight=15pt, includehead, includefoot}
+\setlength{\parindent}{2em}
+\setlength{\parskip}{0.6ex plus 0.3ex}
+
+% ---------- 颜色 ----------
+\definecolor{primaryblue}{RGB}{41, 128, 185}
+\definecolor{darkblue}{RGB}{44, 62, 80}
+\definecolor{accentgreen}{RGB}{39, 174, 96}
+\definecolor{accentorange}{RGB}{230, 126, 34}
+\definecolor{lightgray}{RGB}{236, 240, 241}
+\definecolor{titlecolor}{RGB}{52, 73, 94}
+
+% ---------- 超链接 ----------
+\hypersetup{
+    colorlinks=true,
+    linkcolor=primaryblue,
+    urlcolor=blue,
+    citecolor=primaryblue
+}
+
+% ---------- 页眉页脚 ----------
+\pagestyle{fancy}
+\fancyhf{}
+% 奇数页：左"孑冉一人"，右页码
+\fancyhead[LO]{孑冉一人}
+\fancyhead[RO]{\thepage}
+% 偶数页：左页码，右"孑冉一人"
+\fancyhead[LE]{\thepage}
+\fancyhead[RE]{孑冉一人}
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% ---------- 章节标题格式 ----------
+\titleformat{\chapter}{\huge\bfseries\color{titlecolor}}{第\,\thechapter\,章}{1em}{}
+\titleformat{\section}{\Large\bfseries\color{primaryblue!80!black}}{}{0em}{}
+\titleformat{\subsection}{\large\bfseries\color{black!90}}{}{0em}{}
+\titleformat{\subsubsection}{\normalsize\bfseries\color{black!70}}{}{0em}{}
+
+\titlespacing*{\chapter}{0pt}{0pt}{20pt}
+\titlespacing*{\section}{0pt}{12pt}{6pt}
+\titlespacing*{\subsection}{0pt}{10pt}{4pt}
+\titlespacing*{\subsubsection}{0pt}{8pt}{3pt}
+
+% ---------- 定理环境 ----------
+\newtheoremstyle{reviewstyle}{3pt}{3pt}{\normalfont}{}{\bfseries\color{primaryblue}}{.}{.5em}{}
+\theoremstyle{reviewstyle}
+\newtheorem*{definition}{定义}
+\newtheorem*{theorem}{定理}
+\newtheorem*{property}{性质}
+\newtheorem*{lemma}{引理}
+\newtheorem*{corollary}{推论}
+
+\newtheoremstyle{examplestyle}{3pt}{3pt}{\normalfont}{}{\bfseries\color{accentgreen}}{.}{.5em}{}
+\theoremstyle{examplestyle}
+\newtheorem*{example}{示例}
+
+\newtheoremstyle{notestyle}{3pt}{3pt}{\normalfont}{}{\bfseries\color{accentorange}}{.}{.5em}{}
+\theoremstyle{notestyle}
+\newtheorem*{note}{注意}
+
+% ---------- 自定义盒子 ----------
+\newtcolorbox{examplebox}[1][示例]{
+  colback=primaryblue!5,
+  colframe=primaryblue!60,
+  arc=3pt,
+  boxrule=0.5pt,
+  left=8pt, right=8pt, top=6pt, bottom=6pt,
+  fonttitle=\normalsize\bfseries,
+  coltitle=primaryblue,
+  title={#1}
+}
+
+\newtcolorbox{keybox}[1][要点]{
+  colback=accentorange!5,
+  colframe=accentorange!60,
+  arc=3pt,
+  boxrule=0.5pt,
+  left=8pt, right=8pt, top=6pt, bottom=6pt,
+  fonttitle=\normalsize\bfseries,
+  coltitle=accentorange,
+  title={#1}
+}
+
+\newtcolorbox{formulabox}[1][公式]{
+  colback=accentgreen!5,
+  colframe=accentgreen!60,
+  arc=3pt,
+  boxrule=0.5pt,
+  left=8pt, right=8pt, top=6pt, bottom=6pt,
+  fonttitle=\normalsize\bfseries,
+  coltitle=accentgreen,
+  title={#1}
+}
+
+% ---------- 常用命令 ----------
+\newcommand{\vocab}[1]{\textbf{\color{primaryblue}#1}}
+\newcommand{\keyword}[1]{\textbf{\color{accentorange}#1}}
+\newcommand{\formula}[1]{\boxed{#1}}
+\newcommand{\blank}{\underline{\hspace{2.5cm}}}
+\newcommand{\dblank}{\underline{\hspace{4cm}}}
+\newcommand{\sblank}{\rule{1.5cm}{0.4pt}}
+
+% ---------- 模拟试题环境 ----------
+\newtcolorbox{questionblock}[1][]{
+  colback=primaryblue!3,
+  colframe=primaryblue!70,
+  arc=3pt,
+  boxrule=0.5pt,
+  left=8pt, right=8pt, top=6pt, bottom=6pt,
+  fonttitle=\normalsize\bfseries\color{primaryblue},
+  title={\large 模拟试题 #1}
+}
+
+\newenvironment{mcq}{%
+  \par\noindent\textbf{\color{primaryblue}一、选择题}\par\smallskip
+  \begin{enumerate}[leftmargin=*,itemsep=1.2ex]
+}{%
+  \end{enumerate}
+}
+
+\newenvironment{fillblank}{%
+  \par\noindent\textbf{\color{primaryblue}二、填空题}\par\smallskip
+  \begin{enumerate}[leftmargin=*,itemsep=1.2ex]
+}{%
+  \end{enumerate}
+}
+
+\newenvironment{shortanswer}{%
+  \par\noindent\textbf{\color{primaryblue}三、简答题}\par\smallskip
+  \begin{enumerate}[leftmargin=*,itemsep=1.5ex]
+}{%
+  \end{enumerate}
+}
+
+\newenvironment{comprehensive}{%
+  \par\noindent\textbf{\color{primaryblue}四、综合应用题}\par\smallskip
+  \begin{enumerate}[leftmargin=*,itemsep=1.8ex]
+}{%
+  \end{enumerate}
+}
+
+\newcommand{\choice}[4]{
+  \par\noindent
+  \hspace*{1.5em}A.\ #1\hfill
+  B.\ #2\hfill
+  C.\ #3\hfill
+  D.\ #4\par
+}
+
+% ---------- 参考答案与解析环境 ----------
+\newtcolorbox{solutionblock}[1][参考答案与解析]{
+  colback=accentgreen!5,
+  colframe=accentgreen!70,
+  arc=3pt,
+  boxrule=0.5pt,
+  left=8pt, right=8pt, top=6pt, bottom=6pt,
+  fonttitle=\normalsize\bfseries\color{accentgreen},
+  title={#1}
+}
+
+\newcommand{\answer}[1]{\textbf{答案：} #1}
+\newcommand{\analysis}[1]{\medskip\noindent\textbf{解析：} #1}
+
+% ---------- 考前速记手册环境 ----------
+\newtcolorbox{quickcard}[1][速记卡片]{
+  colback=yellow!3,
+  colframe=accentorange!80,
+  arc=3pt,
+  boxrule=0.5pt,
+  left=8pt, right=8pt, top=6pt, bottom=6pt,
+  fonttitle=\normalsize\bfseries\color{accentorange},
+  title={#1}
+}
+
+\newcommand{\keypoint}[1]{\textbf{\color{accentorange}\large #1}}
+\newcommand{\pitfall}{\textbf{\color{red!80!black}[易错]}}
+\newcommand{\mustknow}{\textbf{\color{accentgreen!80!black}[必记]}}
+\newcommand{\formulaicon}{\textbf{\color{primaryblue}[公式]}}
+
+% ---------- 封面命令 ----------
+\newcommand{\reviewtitle}[1]{
+  \begin{center}
+    \vspace*{2cm}
+    {\Huge\bfseries\color{titlecolor} #1}\\[0.8cm]
+    {\large\color{primaryblue!70!black} 孑冉一人\quad 整理}\\[0.3cm]
+    {\small\color{gray} \today}
+  \end{center}
+  \thispagestyle{empty}
+  \newpage
+}
