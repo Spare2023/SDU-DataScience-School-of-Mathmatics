@@ -18,8 +18,7 @@ Licensed under the BSD 3-Clause License
 
 本仓库收录《视觉与数据计算》课程的参考代码。
 
-* **课程图像资源**：部分示例图像可在付老师的主页查看：
-https://faculty.sdu.edu.cn/fushujun/zh\_CN/jxzy/393152/content/1862.htm#jxzy
+* **课程图像资源**：部分示例图像可在[付老师的主页](https://faculty.sdu.edu.cn/fushujun/zh_CN/jxzy/393152/content/1862.htm#jxzy)查看。
 * **数据获取**：完整的实验图像以及部分 ground truth（金标准掩膜）文件需等待任课老师后续发布，请以老师通知为准。
 * **使用须知**：本文件夹内的代码仅作学习参考与分享之用，**不可直接复制粘贴作为课程作业提交**；建议在理解代码的基础上，借助 AI 工具进行修改与调整，形成属于你自己的实验代码。
 
